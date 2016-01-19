@@ -90,6 +90,8 @@ public class TagView: UIButton {
     
     let removeButton = CloseButton()
     
+    weak var relatedTagView: TagView?
+    
     @IBInspectable var enableRemoveButton: Bool = false {
         didSet {
             removeButton.hidden = !enableRemoveButton
