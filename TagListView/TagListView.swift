@@ -199,7 +199,7 @@ public class TagListView: UIView {
         rearrangeViews()
     }
     
-    private func rearrangeViews() {
+    internal func rearrangeViews() {
         let views = tagViews as [UIView] + tagBackgroundViews + rowViews
         for view in views {
             view.removeFromSuperview()
