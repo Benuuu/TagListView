@@ -263,9 +263,7 @@ public class TagListView: UIView {
         return CGSizeMake(frame.width, height)
     }
     
-    public func addTag(title: String) -> TagView {
-        let tagView = TagView(title: title)
-        
+    internal func configureTagView(tagView: TagView) {
         tagView.textColor = textColor
         tagView.selectedTextColor = selectedTextColor
         tagView.tagBackgroundColor = tagBackgroundColor
@@ -282,7 +280,11 @@ public class TagListView: UIView {
         tagView.removeIconLineColor = removeIconLineColor
         tagView.addTarget(self, action: "tagPressed:", forControlEvents: .TouchUpInside)
         tagView.removeButton.addTarget(self, action: "removeButtonPressed:", forControlEvents: .TouchUpInside)
-        
+    }
+    
+    public func addTag(title: String) -> TagView {
+        let tagView = TagView(title: title)
+        configureTagView(tagView)
         return addTagView(tagView)
     }
     
@@ -290,7 +292,6 @@ public class TagListView: UIView {
         tagViews.append(tagView)
         tagBackgroundViews.append(UIView(frame: tagView.bounds))
         rearrangeViews()
-        
         return tagView
     }
     
